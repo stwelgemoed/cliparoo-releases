@@ -2,11 +2,17 @@
 
 **A privacy-first clipboard manager for macOS**
 
+> **[cliparoo.app](https://www.cliparoo.app)** | **[Download Latest Release](https://github.com/stwelgemoed/cliparoo-releases/releases/latest)**
+
+---
+
 Cliparoo is a native macOS clipboard manager that keeps your clipboard history organized and accessible—all while keeping your data entirely on your device.
 
 ## Download
 
-**[Download Cliparoo](https://www.cliparoo.app)** — Free, one-time download
+Free Download
+
+**[Download from Website](https://www.cliparoo.app)** | **[Download from GitHub Releases](https://github.com/stwelgemoed/cliparoo-releases/releases/latest)**
 
 ### System Requirements
 
@@ -52,7 +58,7 @@ Perfect for developers, security professionals, and anyone handling sensitive in
 
 ## Installation
 
-1. Download the DMG from [cliparoo.app](https://www.cliparoo.app)
+1. Download the DMG from [cliparoo.app](https://www.cliparoo.app) or [GitHub Releases](https://github.com/stwelgemoed/cliparoo-releases/releases/latest)
 2. Open the DMG file
 3. Drag Cliparoo to your Applications folder
 4. Launch Cliparoo and grant the requested permissions
