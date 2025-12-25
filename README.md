@@ -8,6 +8,8 @@
 
 Cliparoo is a native macOS clipboard manager that keeps your clipboard history organized and accessible—all while keeping your data entirely on your device.
 
+**Have feedback or ideas?** [Open an issue](https://github.com/stwelgemoed/cliparoo-releases/issues/new) — bug reports and feature requests are welcome!
+
 ## Download
 
 Free Download
@@ -16,7 +18,7 @@ Free Download
 
 ### System Requirements
 
-- macOS 13.0 (Ventura) or later
+- macOS 15.6 (Sequoia) or later
 - Apple Silicon or Intel Mac
 
 ## Features
@@ -69,10 +71,17 @@ Cliparoo requires the following macOS permissions to function:
 - **Accessibility** — For clipboard monitoring
 - **Input Monitoring** — For global keyboard shortcuts
 
-## Support & Feedback
+## Feedback & Feature Requests
+
+Found a bug? Have an idea to make Cliparoo better? I'd love to hear from you!
+
+- **[Report a Bug](https://github.com/stwelgemoed/cliparoo-releases/issues/new)** — Help improve Cliparoo by reporting issues
+- **[Request a Feature](https://github.com/stwelgemoed/cliparoo-releases/issues/new)** — Share your ideas for new features
+- **[View Open Issues](https://github.com/stwelgemoed/cliparoo-releases/issues)** — See what's being worked on
+
+Your feedback helps shape the future of Cliparoo!
 
 - **Website**: [cliparoo.app](https://www.cliparoo.app)
-- **Issues**: Use the [Issues](../../issues) tab in this repository to report bugs or request features
 
 ## License
 
