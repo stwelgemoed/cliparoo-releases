@@ -75,8 +75,8 @@ Cliparoo requires the following macOS permissions to function:
 
 Found a bug? Have an idea to make Cliparoo better? I'd love to hear from you!
 
-- **[Report a Bug](https://github.com/stwelgemoed/cliparoo-releases/issues/new)** — Help improve Cliparoo by reporting issues
-- **[Request a Feature](https://github.com/stwelgemoed/cliparoo-releases/issues/new)** — Share your ideas for new features
+- **[Report a Bug](https://github.com/stwelgemoed/cliparoo-releases/issues/new?labels=bug)** — Help improve Cliparoo by reporting issues
+- **[Request a Feature](https://github.com/stwelgemoed/cliparoo-releases/issues/new?labels=enhancement)** — Share your ideas for new features
 - **[View Open Issues](https://github.com/stwelgemoed/cliparoo-releases/issues)** — See what's being worked on
 
 Your feedback helps shape the future of Cliparoo!
