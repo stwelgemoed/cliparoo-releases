@@ -8,11 +8,8 @@
 
 Cliparoo is a native macOS clipboard manager that keeps your clipboard history organized and accessible—all while keeping your data entirely on your device.
 
-**Have feedback or ideas?** [Open an issue](https://github.com/stwelgemoed/cliparoo-releases/issues/new) — bug reports and feature requests are welcome!
 
 ## Download
-
-Free Download
 
 **[Download from Website](https://www.cliparoo.app)** | **[Download from GitHub Releases](https://github.com/stwelgemoed/cliparoo-releases/releases/latest)**
 
@@ -23,9 +20,10 @@ Free Download
 
 ## Features
 
-### Dual Interface Design
-Access your clipboard history two ways:
+### Multi-Interface Design
+Access your clipboard history multiple ways:
 - **Menu bar overlay** — Quick access to recent items from your status bar
+- **Paste shortcut overlay** - Using your defined hotkey (default CMD+SHIFT+V), bring up the paste overlay
 - **Full application window** — Complete history with advanced search and filtering
 
 ### Multiple Content Types
@@ -33,14 +31,13 @@ Cliparoo handles all your clipboard content:
 - Text (with automatic URL detection)
 - Images (with previews)
 - URLs and links
-- Files
 - Rich Text (RTF)
 - HTML content
 
 ### Smart Search & Organization
 - Powerful search to find items instantly
 - Automatic content categorization
-- History of up to 1,000 items
+- History of up to 1,000 items by default but configurable
 
 ### Keyboard-First Design
 - Global hotkeys for quick access
