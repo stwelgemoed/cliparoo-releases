@@ -11,14 +11,14 @@
 
   ### Bug Fix
   - **Fixed auto-update version detection** - Resolved an issue where Sparkle couldn't correctly detect newer versions, preventing automatic updates from being offered]]></description>
-            <pubDate>Tue, 06 Jan 2026 19:23:27 +0000</pubDate>
+            <pubDate>Tue, 06 Jan 2026 19:43:15 +0000</pubDate>
             <enclosure
                 url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.7/Cliparoo_installer.dmg"
                 sparkle:version="0.0.7"
                 sparkle:shortVersionString="0.0.7"
-                length="4781602"
+                length="4781604"
                 type="application/octet-stream"
-                sparkle:edSignature="4mpdBmdvcNEGusaQMpTExSJvTB9GfGnT3q76UVrVe3DGb/PTU+pz6JHLfo6Ty6hmLY/L91B5HF48APNHZCOKCw=="
+                sparkle:edSignature="Eo0eb8hQz/DQqnT8/INZOK8XBFUek/pDIN3bW7dklfqUjjY5czu3wpFYf/Vn73rJbzEmYvJHXKfwILxOhSaQCg=="
             />
             <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
         </item>
