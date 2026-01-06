@@ -6,19 +6,27 @@
         <description>Most recent updates to Cliparoo</description>
         <language>en</language>
         <item>
-            <title>Version 0.0.7</title>
-            <description><![CDATA[## What's New
+            <title>Version 0.0.6</title>
+            <description><![CDATA[  ## What's New
 
-  ### Bug Fix
-  - **Fixed auto-update version detection** - Resolved an issue where Sparkle couldn't correctly detect newer versions, preventing automatic updates from being offered]]></description>
-            <pubDate>Tue, 06 Jan 2026 19:43:15 +0000</pubDate>
+  ### Select All for Bulk Actions
+  Easily select all clipboard items to perform bulk operations like delete or export.
+
+  - **Select All button** - Appears in the toolbar when items exist
+  - **Keyboard shortcut** - Press ⌘A to select all items instantly
+  - **Filter-aware** - Respects your current filters (type, search, advanced filters)
+    - Example: Filter by "Text" then Select All to select only text items
+  - **Smart selection bar** - Shows "X of Y selected" and offers Select All for partial selections
+
+  Perfect for cleaning up your clipboard history or exporting filtered subsets of items.]]></description>
+            <pubDate>Tue, 06 Jan 2026 19:44:34 +0000</pubDate>
             <enclosure
-                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.7/Cliparoo_installer.dmg"
-                sparkle:version="0.0.7"
-                sparkle:shortVersionString="0.0.7"
-                length="4781604"
+                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.6/Cliparoo_installer.dmg"
+                sparkle:version="0.0.6"
+                sparkle:shortVersionString="0.0.6"
+                length="4781560"
                 type="application/octet-stream"
-                sparkle:edSignature="Eo0eb8hQz/DQqnT8/INZOK8XBFUek/pDIN3bW7dklfqUjjY5czu3wpFYf/Vn73rJbzEmYvJHXKfwILxOhSaQCg=="
+                sparkle:edSignature="OBuqRI/cbXcLhZ4aKGoV7Ra2uM+E3WyIBXYRI0bnqvwZW2Nk/uZJH5fBEeCxuARfRRP99hpojNhgrTiHCEIcDw=="
             />
             <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
         </item>
