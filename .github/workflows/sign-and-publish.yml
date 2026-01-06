@@ -1,0 +1,203 @@
+name: Sign Release and Update Appcast
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Release tag to process (e.g., v0.0.5)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  sign-and-publish:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine release tag
+        id: get_tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "TAG=${{ inputs.release_tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "TAG=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download DMG from release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p release-assets
+          gh release download "${{ steps.get_tag.outputs.TAG }}" \
+            --pattern "*.dmg" \
+            --dir release-assets
+
+          # Verify DMG was downloaded
+          if [ ! "$(ls -A release-assets/*.dmg 2>/dev/null)" ]; then
+            echo "Error: No DMG file found in release"
+            exit 1
+          fi
+
+      - name: Install Sparkle tools
+        run: |
+          SPARKLE_VERSION="2.6.4"
+          curl -L -o sparkle.tar.xz \
+            "https://github.com/sparkle-project/Sparkle/releases/download/${SPARKLE_VERSION}/Sparkle-${SPARKLE_VERSION}.tar.xz"
+
+          mkdir -p sparkle-tools
+          tar -xf sparkle.tar.xz -C sparkle-tools
+          chmod +x sparkle-tools/bin/sign_update
+
+      - name: Sign DMG with EdDSA
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          # Validate private key exists
+          if [ -z "$SPARKLE_PRIVATE_KEY" ]; then
+            echo "Error: SPARKLE_PRIVATE_KEY secret is not set"
+            exit 1
+          fi
+
+          # Create temporary key file
+          echo "$SPARKLE_PRIVATE_KEY" > /tmp/sparkle_private_key
+
+          # Get DMG info
+          DMG_FILE=$(ls release-assets/*.dmg | head -1)
+          DMG_NAME=$(basename "$DMG_FILE")
+
+          echo "Signing: $DMG_NAME"
+
+          # Sign and get signature
+          SIGNATURE=$(sparkle-tools/bin/sign_update "$DMG_FILE" -f /tmp/sparkle_private_key)
+
+          if [ -z "$SIGNATURE" ]; then
+            echo "Error: Failed to generate signature"
+            rm /tmp/sparkle_private_key
+            exit 1
+          fi
+
+          # Export for later steps
+          echo "SIGNATURE=$SIGNATURE" >> $GITHUB_ENV
+          echo "DMG_NAME=$DMG_NAME" >> $GITHUB_ENV
+          FILE_SIZE=$(stat -f%z "$DMG_FILE")
+          echo "FILE_SIZE=$FILE_SIZE" >> $GITHUB_ENV
+
+          echo "Signature generated successfully"
+          echo "File size: $FILE_SIZE bytes"
+
+          # Clean up - secure delete
+          rm /tmp/sparkle_private_key
+
+      - name: Setup gh-pages branch
+        run: |
+          # Try to fetch existing gh-pages branch
+          git fetch origin gh-pages:gh-pages 2>/dev/null || true
+
+          # Check if gh-pages exists
+          if git show-ref --verify --quiet refs/heads/gh-pages; then
+            git checkout gh-pages
+          else
+            # Create orphan branch if it doesn't exist
+            git checkout --orphan gh-pages
+            git rm -rf . 2>/dev/null || true
+          fi
+
+          # Ensure docs directory exists
+          mkdir -p docs
+
+      - name: Generate appcast.xml
+        env:
+          TAG: ${{ steps.get_tag.outputs.TAG }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Extract version from tag (remove 'v' prefix if present)
+          VERSION="${TAG#v}"
+
+          # Construct download URL
+          DOWNLOAD_URL="https://github.com/stwelgemoed/cliparoo-releases/releases/download/${TAG}/${DMG_NAME}"
+
+          # Get current date in RFC 2822 format
+          PUB_DATE=$(date -R)
+
+          # Get release notes from GitHub release
+          RELEASE_NOTES=$(gh release view "$TAG" --json body -q '.body' 2>/dev/null || echo "Bug fixes and improvements.")
+
+          # Escape special characters for XML CDATA
+          # Replace ]]> with ]]]]><![CDATA[> to prevent CDATA injection
+          RELEASE_NOTES_ESCAPED=$(echo "$RELEASE_NOTES" | sed 's/]]>/]]]]><![CDATA[>/g')
+
+          echo "Generating appcast for version: $VERSION"
+          echo "Download URL: $DOWNLOAD_URL"
+
+          # Create appcast.xml
+          # Note: This creates a fresh appcast with the latest version
+          # For version history, you'd need to merge with existing appcast
+          printf '%s\n' \
+            '<?xml version="1.0" encoding="utf-8"?>' \
+            '<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">' \
+            '    <channel>' \
+            '        <title>Cliparoo Updates</title>' \
+            '        <link>https://www.cliparoo.app/</link>' \
+            '        <description>Most recent updates to Cliparoo</description>' \
+            '        <language>en</language>' \
+            '        <item>' \
+            "            <title>Version ${VERSION}</title>" \
+            "            <description><![CDATA[${RELEASE_NOTES_ESCAPED}]]></description>" \
+            "            <pubDate>${PUB_DATE}</pubDate>" \
+            '            <enclosure' \
+            "                url=\"${DOWNLOAD_URL}\"" \
+            "                sparkle:version=\"${VERSION}\"" \
+            "                sparkle:shortVersionString=\"${VERSION}\"" \
+            "                length=\"${FILE_SIZE}\"" \
+            '                type="application/octet-stream"' \
+            "                sparkle:edSignature=\"${SIGNATURE}\"" \
+            '            />' \
+            '            <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>' \
+            '        </item>' \
+            '    </channel>' \
+            '</rss>' > docs/appcast.xml
+
+          echo "Appcast generated:"
+          cat docs/appcast.xml
+
+      - name: Commit and push appcast
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          git add docs/appcast.xml
+
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update appcast for ${{ steps.get_tag.outputs.TAG }}"
+            git push origin gh-pages --force
+            echo "Appcast pushed to gh-pages branch"
+          fi
+
+      - name: Summary
+        run: |
+          echo "## Release Signed and Published" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Details" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Version | ${{ steps.get_tag.outputs.TAG }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| DMG File | ${DMG_NAME} |" >> $GITHUB_STEP_SUMMARY
+          echo "| File Size | ${FILE_SIZE} bytes |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### URLs" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Appcast:** https://stwelgemoed.github.io/cliparoo-releases/appcast.xml" >> $GITHUB_STEP_SUMMARY
+          echo "- **Download:** https://github.com/stwelgemoed/cliparoo-releases/releases/download/${{ steps.get_tag.outputs.TAG }}/${DMG_NAME}" >> $GITHUB_STEP_SUMMARY
