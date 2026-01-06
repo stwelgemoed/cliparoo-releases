@@ -77,10 +77,23 @@ jobs:
           echo "Signing: $DMG_NAME"
 
           # Sign and get signature
-          SIGNATURE=$(sparkle-tools/bin/sign_update "$DMG_FILE" -f /tmp/sparkle_private_key)
+          # sign_update outputs: sparkle:edSignature="BASE64" length="12345"
+          # We need to extract just the base64 signature value
+          SIGN_OUTPUT=$(sparkle-tools/bin/sign_update "$DMG_FILE" -f /tmp/sparkle_private_key)
+
+          if [ -z "$SIGN_OUTPUT" ]; then
+            echo "Error: Failed to generate signature"
+            rm /tmp/sparkle_private_key
+            exit 1
+          fi
+
+          echo "Raw sign_update output: $SIGN_OUTPUT"
+
+          # Extract just the signature value (between first pair of quotes)
+          SIGNATURE=$(echo "$SIGN_OUTPUT" | sed -n 's/.*sparkle:edSignature="\([^"]*\)".*/\1/p')
 
           if [ -z "$SIGNATURE" ]; then
-            echo "Error: Failed to generate signature"
+            echo "Error: Failed to parse signature from output"
             rm /tmp/sparkle_private_key
             exit 1
           fi
