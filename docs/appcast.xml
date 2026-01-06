@@ -8,14 +8,14 @@
         <item>
             <title>Version 0.0.4</title>
             <description><![CDATA[Updated application icon and added link to website in settings]]></description>
-            <pubDate>Tue, 06 Jan 2026 18:05:12 +0000</pubDate>
+            <pubDate>Tue, 06 Jan 2026 18:09:29 +0000</pubDate>
             <enclosure
                 url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.4/Cliparoo_installer.dmg"
                 sparkle:version="0.0.4"
                 sparkle:shortVersionString="0.0.4"
                 length="3920286"
                 type="application/octet-stream"
-                sparkle:edSignature="sparkle:edSignature="7Zvf7a+vbeKESoQDo7NIohrdD4C9gF6w3zr4HfHzpoiWHKHrltSN86B6vNCkVYxL5RIWTGn4o1n8bIUtpKpOAQ==" length="3920286""
+                sparkle:edSignature="7Zvf7a+vbeKESoQDo7NIohrdD4C9gF6w3zr4HfHzpoiWHKHrltSN86B6vNCkVYxL5RIWTGn4o1n8bIUtpKpOAQ=="
             />
             <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
         </item>
