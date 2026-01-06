@@ -87,10 +87,8 @@ jobs:
             exit 1
           fi
 
-          echo "Raw sign_update output: $SIGN_OUTPUT"
-
-          # Extract just the signature value (between first pair of quotes)
-          SIGNATURE=$(echo "$SIGN_OUTPUT" | sed -n 's/.*sparkle:edSignature="\([^"]*\)".*/\1/p')
+          # Extract just the signature value (first quoted string)
+          SIGNATURE=$(echo "$SIGN_OUTPUT" | awk -F'"' '{print $2}')
 
           if [ -z "$SIGNATURE" ]; then
             echo "Error: Failed to parse signature from output"
