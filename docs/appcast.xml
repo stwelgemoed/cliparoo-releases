@@ -6,25 +6,27 @@
         <description>Most recent updates to Cliparoo</description>
         <language>en</language>
         <item>
-            <title>Version 0.0.5</title>
-            <description><![CDATA[## What's New
+            <title>Version 0.0.6</title>
+            <description><![CDATA[  ## What's New
 
-  ### Automatic Updates
-  Cliparoo now automatically checks for updates in the background, so you'll always know when a new version is available.
+  ### Select All for Bulk Actions
+  Easily select all clipboard items to perform bulk operations like delete or export.
 
-  - **Automatic update checks** - Cliparoo will periodically check for new versions (every 24 hours)
-  - **User control** - Enable or disable automatic checks in Settings > About
-  - **Manual check** - Use the "Check for Updates" button anytime to check on demand
+  - **Select All button** - Appears in the toolbar when items exist
+  - **Keyboard shortcut** - Press ⌘A to select all items instantly
+  - **Filter-aware** - Respects your current filters (type, search, advanced filters)
+    - Example: Filter by "Text" then Select All to select only text items
+  - **Smart selection bar** - Shows "X of Y selected" and offers Select All for partial selections
 
-  Your update preferences are saved and persist across app restarts and updates.]]></description>
-            <pubDate>Tue, 06 Jan 2026 18:32:11 +0000</pubDate>
+  Perfect for cleaning up your clipboard history or exporting filtered subsets of items.]]></description>
+            <pubDate>Tue, 06 Jan 2026 19:03:07 +0000</pubDate>
             <enclosure
-                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.5/Cliparoo_installer.dmg"
-                sparkle:version="0.0.5"
-                sparkle:shortVersionString="0.0.5"
-                length="4774070"
+                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.6/Cliparoo_installer.dmg"
+                sparkle:version="0.0.6"
+                sparkle:shortVersionString="0.0.6"
+                length="4781622"
                 type="application/octet-stream"
-                sparkle:edSignature="uCGDijWnIAeD3kuEfzWnJDNjPQ3YEeExuQkTGZ3z7Efx7A0vDsSRDhSIyMO3NTAdBV8TQH670oVWzE0dHYBEAA=="
+                sparkle:edSignature="DOCJ55f6IuFTbudQGpgFgCUXLjIl5rftQrAyIf/eVWj0FUyob7EV0mp2iFFT7yXtuIxyS1fXnKHnIWKox+3BCg=="
             />
             <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
         </item>
