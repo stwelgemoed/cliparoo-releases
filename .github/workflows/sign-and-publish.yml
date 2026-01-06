@@ -141,31 +141,30 @@ jobs:
           # Create appcast.xml
           # Note: This creates a fresh appcast with the latest version
           # For version history, you'd need to merge with existing appcast
-          cat > docs/appcast.xml << EOF
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <channel>
-        <title>Cliparoo Updates</title>
-        <link>https://www.cliparoo.app/</link>
-        <description>Most recent updates to Cliparoo</description>
-        <language>en</language>
-        <item>
-            <title>Version ${VERSION}</title>
-            <description><![CDATA[${RELEASE_NOTES_ESCAPED}]]></description>
-            <pubDate>${PUB_DATE}</pubDate>
-            <enclosure
-                url="${DOWNLOAD_URL}"
-                sparkle:version="${VERSION}"
-                sparkle:shortVersionString="${VERSION}"
-                length="${FILE_SIZE}"
-                type="application/octet-stream"
-                sparkle:edSignature="${SIGNATURE}"
-            />
-            <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
-        </item>
-    </channel>
-</rss>
-EOF
+          printf '%s\n' \
+            '<?xml version="1.0" encoding="utf-8"?>' \
+            '<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">' \
+            '    <channel>' \
+            '        <title>Cliparoo Updates</title>' \
+            '        <link>https://www.cliparoo.app/</link>' \
+            '        <description>Most recent updates to Cliparoo</description>' \
+            '        <language>en</language>' \
+            '        <item>' \
+            "            <title>Version ${VERSION}</title>" \
+            "            <description><![CDATA[${RELEASE_NOTES_ESCAPED}]]></description>" \
+            "            <pubDate>${PUB_DATE}</pubDate>" \
+            '            <enclosure' \
+            "                url=\"${DOWNLOAD_URL}\"" \
+            "                sparkle:version=\"${VERSION}\"" \
+            "                sparkle:shortVersionString=\"${VERSION}\"" \
+            "                length=\"${FILE_SIZE}\"" \
+            '                type="application/octet-stream"' \
+            "                sparkle:edSignature=\"${SIGNATURE}\"" \
+            '            />' \
+            '            <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>' \
+            '        </item>' \
+            '    </channel>' \
+            '</rss>' > docs/appcast.xml
 
           echo "Appcast generated:"
           cat docs/appcast.xml
