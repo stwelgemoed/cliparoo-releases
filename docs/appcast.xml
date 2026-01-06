@@ -6,16 +6,25 @@
         <description>Most recent updates to Cliparoo</description>
         <language>en</language>
         <item>
-            <title>Version 0.0.4</title>
-            <description><![CDATA[Updated application icon and added link to website in settings]]></description>
-            <pubDate>Tue, 06 Jan 2026 18:09:29 +0000</pubDate>
+            <title>Version 0.0.5</title>
+            <description><![CDATA[## What's New
+
+  ### Automatic Updates
+  Cliparoo now automatically checks for updates in the background, so you'll always know when a new version is available.
+
+  - **Automatic update checks** - Cliparoo will periodically check for new versions (every 24 hours)
+  - **User control** - Enable or disable automatic checks in Settings > About
+  - **Manual check** - Use the "Check for Updates" button anytime to check on demand
+
+  Your update preferences are saved and persist across app restarts and updates.]]></description>
+            <pubDate>Tue, 06 Jan 2026 18:32:11 +0000</pubDate>
             <enclosure
-                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.4/Cliparoo_installer.dmg"
-                sparkle:version="0.0.4"
-                sparkle:shortVersionString="0.0.4"
-                length="3920286"
+                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.5/Cliparoo_installer.dmg"
+                sparkle:version="0.0.5"
+                sparkle:shortVersionString="0.0.5"
+                length="4774070"
                 type="application/octet-stream"
-                sparkle:edSignature="7Zvf7a+vbeKESoQDo7NIohrdD4C9gF6w3zr4HfHzpoiWHKHrltSN86B6vNCkVYxL5RIWTGn4o1n8bIUtpKpOAQ=="
+                sparkle:edSignature="uCGDijWnIAeD3kuEfzWnJDNjPQ3YEeExuQkTGZ3z7Efx7A0vDsSRDhSIyMO3NTAdBV8TQH670oVWzE0dHYBEAA=="
             />
             <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
         </item>
