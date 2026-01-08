@@ -57,6 +57,9 @@ jobs:
           tar -xf sparkle.tar.xz -C sparkle-tools
           chmod +x sparkle-tools/bin/sign_update
 
+      - name: Install pandoc
+        run: brew install pandoc
+
       - name: Sign DMG with EdDSA
         env:
           SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
@@ -139,8 +142,11 @@ jobs:
           # Get current date in RFC 2822 format
           PUB_DATE=$(date -R)
 
-          # Get release notes from GitHub release
-          RELEASE_NOTES=$(gh release view "$TAG" --json body -q '.body' 2>/dev/null || echo "Bug fixes and improvements.")
+          # Get release notes from GitHub release (Markdown)
+          RELEASE_NOTES_MD=$(gh release view "$TAG" --json body -q '.body' 2>/dev/null || echo "Bug fixes and improvements.")
+
+          # Convert Markdown to HTML using pandoc (GitHub Flavored Markdown)
+          RELEASE_NOTES=$(echo "$RELEASE_NOTES_MD" | pandoc -f gfm -t html)
 
           # Escape special characters for XML CDATA
           # Replace ]]> with ]]]]><![CDATA[> to prevent CDATA injection
