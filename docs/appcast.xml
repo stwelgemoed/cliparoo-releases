@@ -6,23 +6,25 @@
         <description>Most recent updates to Cliparoo</description>
         <language>en</language>
         <item>
-            <title>Version 0.0.8</title>
+            <title>Version 0.0.9</title>
             <description><![CDATA[<h2 id="whats-new">What's New</h2>
 <h3 id="bug-fix">Bug Fix</h3>
 <ul>
-<li><strong>Fixed main window border highlight issue</strong> - Resolved
-an issue where the main window border would intermittently display a
-blue highlight when alternating between Select All and Deselect All in
-clipboard history</li>
+<li><strong>Fixed auto-update not triggering for menu bar apps</strong>
+- Resolved an issue where the automatic update check would not run when
+the app was only running in the menu bar without any windows open</li>
+<li><strong>Fixed update dialog appearing behind other windows</strong>
+- The update notification now properly comes to the foreground and shows
+the Cliparoo icon in the dock</li>
 </ul>]]></description>
-            <pubDate>Thu, 08 Jan 2026 17:02:00 +0000</pubDate>
+            <pubDate>Thu, 08 Jan 2026 17:42:34 +0000</pubDate>
             <enclosure
-                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.8/Cliparoo_installer.dmg"
-                sparkle:version="0.0.8"
-                sparkle:shortVersionString="0.0.8"
-                length="4778110"
+                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.9/Cliparoo_installer.dmg"
+                sparkle:version="0.0.9"
+                sparkle:shortVersionString="0.0.9"
+                length="4782184"
                 type="application/octet-stream"
-                sparkle:edSignature="1BcVhZ3/SOCFgnw8q7M8BP8WPrhgK3+E5hIifT4WvzQLuHolU5QTAnrSqCiNmJYQdRBCSP2Zh4vre63PrB1NBQ=="
+                sparkle:edSignature="ZXOPLaf+ujik0EIYSlzDy59dJQLd1OYF01Mzd0C0RxHyhvmKrjeaVptLzUEyzVqeqMacU0YzLNGu/4U5UKgcAA=="
             />
             <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
         </item>
