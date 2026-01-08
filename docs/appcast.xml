@@ -6,19 +6,23 @@
         <description>Most recent updates to Cliparoo</description>
         <language>en</language>
         <item>
-            <title>Version 0.0.7</title>
-            <description><![CDATA[## What's New
-
-  ### Bug Fix
-  - **Fixed auto-update version detection** - Resolved an issue where Sparkle couldn't correctly detect newer versions, preventing automatic updates from being offered]]></description>
-            <pubDate>Thu, 08 Jan 2026 16:48:12 +0000</pubDate>
+            <title>Version 0.0.8</title>
+            <description><![CDATA[<h2 id="whats-new">What's New</h2>
+<h3 id="bug-fix">Bug Fix</h3>
+<ul>
+<li><strong>Fixed main window border highlight issue</strong> - Resolved
+an issue where the main window border would intermittently display a
+blue highlight when alternating between Select All and Deselect All in
+clipboard history</li>
+</ul>]]></description>
+            <pubDate>Thu, 08 Jan 2026 17:02:00 +0000</pubDate>
             <enclosure
-                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.7/Cliparoo_installer.dmg"
-                sparkle:version="0.0.7"
-                sparkle:shortVersionString="0.0.7"
-                length="4781604"
+                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.8/Cliparoo_installer.dmg"
+                sparkle:version="0.0.8"
+                sparkle:shortVersionString="0.0.8"
+                length="4778110"
                 type="application/octet-stream"
-                sparkle:edSignature="Eo0eb8hQz/DQqnT8/INZOK8XBFUek/pDIN3bW7dklfqUjjY5czu3wpFYf/Vn73rJbzEmYvJHXKfwILxOhSaQCg=="
+                sparkle:edSignature="1BcVhZ3/SOCFgnw8q7M8BP8WPrhgK3+E5hIifT4WvzQLuHolU5QTAnrSqCiNmJYQdRBCSP2Zh4vre63PrB1NBQ=="
             />
             <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
         </item>
