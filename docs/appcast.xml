@@ -6,25 +6,22 @@
         <description>Most recent updates to Cliparoo</description>
         <language>en</language>
         <item>
-            <title>Version 0.0.9</title>
+            <title>Version 0.0.10</title>
             <description><![CDATA[<h2 id="whats-new">What's New</h2>
-<h3 id="bug-fix">Bug Fix</h3>
+<h3 id="new-feature">New Feature</h3>
 <ul>
-<li><strong>Fixed auto-update not triggering for menu bar apps</strong>
-- Resolved an issue where the automatic update check would not run when
-the app was only running in the menu bar without any windows open</li>
-<li><strong>Fixed update dialog appearing behind other windows</strong>
-- The update notification now properly comes to the foreground and shows
-the Cliparoo icon in the dock</li>
+<li><strong>Post-update confirmation notification</strong> - After an
+update is installed, a notification now appears to confirm you're
+running the latest version</li>
 </ul>]]></description>
-            <pubDate>Thu, 08 Jan 2026 17:42:34 +0000</pubDate>
+            <pubDate>Thu, 08 Jan 2026 18:30:58 +0000</pubDate>
             <enclosure
-                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.9/Cliparoo_installer.dmg"
-                sparkle:version="0.0.9"
-                sparkle:shortVersionString="0.0.9"
-                length="4782184"
+                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.10/Cliparoo_installer.dmg"
+                sparkle:version="0.0.10"
+                sparkle:shortVersionString="0.0.10"
+                length="4791411"
                 type="application/octet-stream"
-                sparkle:edSignature="ZXOPLaf+ujik0EIYSlzDy59dJQLd1OYF01Mzd0C0RxHyhvmKrjeaVptLzUEyzVqeqMacU0YzLNGu/4U5UKgcAA=="
+                sparkle:edSignature="lVJ+/EBq+4X0zM7t29tWTmqUwd0o2QMV1PmBoY8e7Qzshx6FD+tGtIl4Zu9rkDic0VLgZBBsIXj7nkuv6J2bCg=="
             />
             <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
         </item>
