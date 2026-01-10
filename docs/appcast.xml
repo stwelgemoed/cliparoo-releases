@@ -6,22 +6,44 @@
         <description>Most recent updates to Cliparoo</description>
         <language>en</language>
         <item>
-            <title>Version 0.0.10</title>
+            <title>Version 0.1.0</title>
             <description><![CDATA[<h2 id="whats-new">What's New</h2>
+<h3 id="important">Important</h3>
+<ul>
+<li><strong>Cliparoo is becoming Clipgrep</strong> - This is the final
+release of Cliparoo. We're rebranding to Clipgrep with a fresh new
+identity!</li>
+</ul>
 <h3 id="new-feature">New Feature</h3>
 <ul>
-<li><strong>Post-update confirmation notification</strong> - After an
-update is installed, a notification now appears to confirm you're
-running the latest version</li>
+<li><strong>Migration export tool</strong> - Export your clipboard
+history and settings to seamlessly migrate to Clipgrep. A migration
+dialog will appear on launch, or access it anytime in Settings &gt;
+About &gt; Data &amp; Migration.</li>
+</ul>
+<h3 id="migration-instructions">Migration Instructions</h3>
+<ol type="1">
+<li>Click "Export Data" in the migration dialog</li>
+<li>Download Clipgrep from <a
+href="https://clipgrep.app">clipgrep.app</a></li>
+<li>In Clipgrep, go to Settings and import your exported file</li>
+</ol>
+<h3 id="notes">Notes</h3>
+<ul>
+<li>The migration reminder will appear on launch and hourly until you
+export</li>
+<li>Click "Remind Later" to snooze the reminder</li>
+<li>Your export file will be saved to
+<code>~/Documents/cliparoo-migration.json</code></li>
 </ul>]]></description>
-            <pubDate>Thu, 08 Jan 2026 18:30:58 +0000</pubDate>
+            <pubDate>Sat, 10 Jan 2026 10:58:54 +0000</pubDate>
             <enclosure
-                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.0.10/Cliparoo_installer.dmg"
-                sparkle:version="0.0.10"
-                sparkle:shortVersionString="0.0.10"
-                length="4791411"
+                url="https://github.com/stwelgemoed/cliparoo-releases/releases/download/v0.1.0/Cliparoo_installer.dmg"
+                sparkle:version="0.1.0"
+                sparkle:shortVersionString="0.1.0"
+                length="4919855"
                 type="application/octet-stream"
-                sparkle:edSignature="lVJ+/EBq+4X0zM7t29tWTmqUwd0o2QMV1PmBoY8e7Qzshx6FD+tGtIl4Zu9rkDic0VLgZBBsIXj7nkuv6J2bCg=="
+                sparkle:edSignature="z7k6oYdGTw5/fOzKz6dpv+y9ZfdqYm/fL54GErksm9/6M007tSRwKwD8V0ow6bNBHOuULalL1YpTQDIwNnqvBA=="
             />
             <sparkle:minimumSystemVersion>15.6</sparkle:minimumSystemVersion>
         </item>
